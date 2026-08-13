@@ -5,6 +5,11 @@ from app import app
 def client():
     """Create test client"""
     app.config['TESTING'] = True
+    
+    # Reset state before each test
+    app.todos = []
+    app.todo_id_counter = 1
+    
     with app.test_client() as client:
         yield client
 
