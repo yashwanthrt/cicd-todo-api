@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: CI/CD Pipeline
 
 on:
   push:
@@ -34,7 +34,8 @@ jobs:
       if: always()
       with:
         files: ./coverage.xml
-        deploy:
+
+  deploy:
     needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
@@ -45,4 +46,12 @@ jobs:
     - name: Deploy Message
       run: |
         echo "✅ Deployment successful!"
-        echo "In production, this would deploy to: Heroku, AWS, Azure, etc."
+        echo "All tests passed on main branch"
+        echo "In production, this would deploy to: Heroku, AWS, Azure, Railway, Render, etc."
+        echo "Deployment timestamp: $(date)"
+    
+    - name: Simulate Deployment
+      run: |
+        echo "📦 Building application..."
+        echo "🚀 Deploying to production..."
+        echo "✨ Application is live!"
