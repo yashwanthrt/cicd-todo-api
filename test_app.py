@@ -1,5 +1,5 @@
 import pytest
-from app import app
+from app import app, reset_todos
 
 @pytest.fixture
 def client():
@@ -7,8 +7,7 @@ def client():
     app.config['TESTING'] = True
     
     # Reset state before each test
-    app.todos = []
-    app.todo_id_counter = 1
+    reset_todos()
     
     with app.test_client() as client:
         yield client

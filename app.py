@@ -9,6 +9,12 @@ CORS(app)
 todos = []
 todo_id_counter = 1
 
+def reset_todos():
+    """Reset todos for testing"""
+    global todos, todo_id_counter
+    todos = []
+    todo_id_counter = 1
+
 @app.route('/', methods=['GET'])
 def health_check():
     """Health check endpoint"""
