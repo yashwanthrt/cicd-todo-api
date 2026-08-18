@@ -208,4 +208,4 @@ def delete_todo(todo_id):
     return jsonify({'message': 'Todo deleted successfully'}), 200
 
 if __name__ == '__main__':
-    app.run(debug=os.getenv('FLASK_DEBUG', False))
+    app.run(host='0.0.0.0', port=5000, debug=os.getenv('FLASK_DEBUG', False))
