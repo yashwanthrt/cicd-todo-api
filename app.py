@@ -14,7 +14,13 @@ todo_id_counter = 1
 def reset_todos():
     """Reset todos for testing"""
     global todos, todo_id_counter
-    todos = []
+    todos = [
+        {
+            'id': 1,
+            'title': 'ADS CICD Todo',
+            'completed': True
+        }
+    ]
     todo_id_counter = 1
 
 @app.route('/', methods=['GET'])
@@ -58,6 +64,9 @@ def get_todos():
             count:
               type: integer
     """
+    if len(todos) == 0:
+        reset_todos()
+
     return jsonify({'todos': todos, 'count': len(todos)}), 200
 
 @app.route('/todos', methods=['POST'])
