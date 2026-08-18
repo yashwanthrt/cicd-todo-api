@@ -23,6 +23,7 @@ def test_get_empty_todos(client):
     response = client.get('/todos')
     assert response.status_code == 200
     assert response.json['todos'] == []
+    assert response.json['count'] == 0
 
 def test_create_todo(client):
     """Test creating a todo"""

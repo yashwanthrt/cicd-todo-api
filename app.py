@@ -55,8 +55,10 @@ def get_todos():
                     type: string
                   completed:
                     type: boolean
+            count:
+              type: integer
     """
-    return jsonify({'todos': todos}), 200
+    return jsonify({'todos': todos, 'count': len(todos)}), 200
 
 @app.route('/todos', methods=['POST'])
 def create_todo():
