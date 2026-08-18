@@ -73,7 +73,7 @@ def create_todo():
           properties:
             title:
               type: string
-              example: "Learn CI/CD"
+              example: "Learn github CI/CD"
     responses:
       201:
         description: Todo created successfully
