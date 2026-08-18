@@ -17,7 +17,7 @@ def reset_todos():
     todos = [
         {
             'id': 1,
-            'title': 'ADS CICD Todo',
+            'title': 'Test Todo',
             'completed': True
         }
     ]

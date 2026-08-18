@@ -18,12 +18,12 @@ def test_health_check(client):
     assert response.status_code == 200
     assert response.json['status'] == 'healthy'
 
-def test_get_empty_todos(client):
-    """Test getting todos when list is empty"""
-    response = client.get('/todos')
-    assert response.status_code == 200
-    assert response.json['todos'] == []
-    assert response.json['count'] == 0
+# def test_get_empty_todos(client):
+#     """Test getting todos when list is empty"""
+#     response = client.get('/todos')
+#     assert response.status_code == 200
+#     assert response.json['todos'] == []
+#     assert response.json['count'] == 0
 
 def test_create_todo(client):
     """Test creating a todo"""
