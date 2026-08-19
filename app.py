@@ -69,6 +69,33 @@ def get_todos():
 
     return jsonify({'todos': todos, 'count': len(todos)}), 200
 
+@app.route('/todos/completed', methods=['GET'])
+def get_completed_todos():
+    """
+    Get all completed todos
+    ---
+    responses:
+      200:
+        description: List of completed todos
+        schema:
+          properties:
+            todos:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  completed:
+                    type: boolean
+            count:
+              type: integer
+    """
+    completed = [t for t in todos if t['completed']]
+    return jsonify({'todos': completed, 'count': len(completed)}), 200
+
 @app.route('/todos', methods=['POST'])
 def create_todo():
     """

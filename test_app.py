@@ -72,3 +72,10 @@ def test_delete_todo(client):
     # Verify it's gone
     response = client.get('/todos/1')
     assert response.status_code == 404
+
+def test_get_completed_todos(client):
+    """Test getting only completed todos"""
+    client.post('/todos', json={'title': 'Not done'})
+    response = client.get('/todos/completed')
+    assert response.status_code == 200
+    assert all(t['completed'] for t in response.json['todos'])
